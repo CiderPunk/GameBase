@@ -5,17 +5,25 @@ import java.awt.image.BufferStrategy;
 
 import javax.swing.*;
 
-public class Screen extends Canvas  implements Runnable
+public class Screen extends Canvas  
 {
 	
-	JFrame oFrame;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	protected JFrame oFrame;
 	protected BufferStrategy oBuffer;
-	IGameState oCurrentState;
+	protected IGameState oCurrentState;
+
 	
+	public void DisposeScreen(){
+		oFrame.dispose();
+	}
 	
-  private Screen(Dimension oSize)
+  public void InitScreen(String sName, Dimension oSize)
   {
-		oFrame = new JFrame("Tanktris");
+		oFrame = new JFrame(sName);
 		JPanel oPanel = (JPanel) oFrame.getContentPane();
 	
 		this.setSize(oSize);
@@ -47,12 +55,12 @@ public class Screen extends Canvas  implements Runnable
   
 
 
-	public void run(IGameState oInitialState) {
+	public void RunMainLoop(IGameState oInitialState) {
 		oCurrentState = oInitialState;
 		double fTimePerFrame = 1000.0f / 60.0f;
 		long lTicks = 0;
-		long lLastTime, lStartTime;
-		lLastTime = lStartTime = System.currentTimeMillis();
+		long lStartTime;
+		lStartTime = System.currentTimeMillis();
 		System.out.println("started");
 		while (oCurrentState != null){
 			//update current state
@@ -119,30 +127,7 @@ public class Screen extends Canvas  implements Runnable
 	public void resume(){
 	//	oCurrentState = oPause;
 	}
-	
-/*
-	public void keyPressed(KeyEvent e){
-		int iKeyCode = e.getKeyCode();
-		if (iKeyCode == KeyEvent.VK_ESCAPE){
-			this.stop();
-		}
-	}
 
 
-	public void keyReleased(KeyEvent arg0) {
-	}
-
-
-
-	public void keyTyped(KeyEvent arg0) {
-	}
-*/
-
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		
-	}
- 
 
 }
