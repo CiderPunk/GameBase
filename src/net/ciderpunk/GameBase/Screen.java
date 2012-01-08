@@ -110,15 +110,7 @@ public class Screen extends Canvas  implements Runnable
 	}
 	
 	
-	
-	public void pause(){
-	//	oCurrentState = oPause;
-	}
-	
 
-	public void resume(){
-	//	oCurrentState = oPause;
-	}
 	
 /*
 	public void keyPressed(KeyEvent e){
